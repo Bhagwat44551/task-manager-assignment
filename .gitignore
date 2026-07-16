@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.env
+.angular/
+*.log
+
+# Dependencies
+backend/node_modules/
+frontend/node_modules/
+
+# Environment files
+backend/.env
+frontend/.env
+
+# Angular build
+frontend/dist/
+
+# Node build
+backend/dist/
+
+# Logs
+*.log
+
+# OS
+.DS_Store

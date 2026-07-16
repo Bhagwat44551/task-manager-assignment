@@ -1,0 +1,68 @@
+<div class="page">
+  <header>
+    <h1>My Tasks</h1>
+    <div class="user-info">
+      <span>{{ auth.currentUsername() }}</span>
+      <button class="logout-btn" (click)="logout()">Logout</button>
+    </div>
+  </header>
+
+  @if (errorMessage()) {
+    <p class="error">{{ errorMessage() }}</p>
+  }
+
+  <section class="add-task">
+    <input
+      type="text"
+      [(ngModel)]="newTitle"
+      placeholder="Task title"
+      (keyup.enter)="addTask()"
+    />
+    <input
+      type="text"
+      [(ngModel)]="newDescription"
+      placeholder="Description (optional)"
+      (keyup.enter)="addTask()"
+    />
+    <button (click)="addTask()">Add Task</button>
+  </section>
+
+  <section class="task-list">
+    @if (tasks().length === 0) {
+      <p class="empty-state">No tasks yet. Add one above.</p>
+    }
+
+    @for (task of tasks(); track task._id) {
+      <div class="task-item" [class.completed]="task.completed">
+        @if (editingTaskId() === task._id) {
+          <div class="edit-form">
+            <input type="text" [(ngModel)]="editTitle" placeholder="Title" />
+            <input type="text" [(ngModel)]="editDescription" placeholder="Description" />
+            <div class="edit-actions">
+              <button (click)="saveEdit(task)">Save</button>
+              <button class="secondary" (click)="cancelEdit()">Cancel</button>
+            </div>
+          </div>
+        } @else {
+          <div class="task-content">
+            <input
+              type="checkbox"
+              [checked]="task.completed"
+              (change)="toggleComplete(task)"
+            />
+            <div class="task-text">
+              <p class="task-title">{{ task.title }}</p>
+              @if (task.description) {
+                <p class="task-desc">{{ task.description }}</p>
+              }
+            </div>
+          </div>
+          <div class="task-actions">
+            <button class="secondary" (click)="startEdit(task)">Edit</button>
+            <button class="danger" (click)="deleteTask(task)">Delete</button>
+          </div>
+        }
+      </div>
+    }
+  </section>
+</div>

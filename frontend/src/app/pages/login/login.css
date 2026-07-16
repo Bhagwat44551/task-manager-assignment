@@ -1,0 +1,91 @@
+.auth-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f4f5f7;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.auth-card {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  color: #1a1a1a;
+}
+
+h2 {
+  margin: 0 0 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #666;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+label {
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+  color: #333;
+  font-weight: 600;
+}
+
+input {
+  padding: 0.65rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4a63e7;
+}
+
+button {
+  padding: 0.7rem;
+  background: #4a63e7;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background: #3b52c4;
+}
+
+.error {
+  color: #d93025;
+  font-size: 0.85rem;
+  margin: -0.5rem 0 0.75rem;
+}
+
+.toggle-text {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.toggle-text a {
+  color: #4a63e7;
+  cursor: pointer;
+  font-weight: 600;
+}

@@ -1,0 +1,39 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h1>Task Manager</h1>
+    <h2>{{ isRegisterMode() ? 'Create an account' : 'Log in' }}</h2>
+
+    <form (ngSubmit)="submit()">
+      <label for="username">Username</label>
+      <input
+        id="username"
+        type="text"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="Enter username"
+        autocomplete="username"
+      />
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Enter password"
+        autocomplete="current-password"
+      />
+
+      @if (errorMessage()) {
+        <p class="error">{{ errorMessage() }}</p>
+      }
+
+      <button type="submit">{{ isRegisterMode() ? 'Register' : 'Login' }}</button>
+    </form>
+
+    <p class="toggle-text">
+      {{ isRegisterMode() ? 'Already have an account?' : "Don't have an account?" }}
+      <a (click)="toggleMode()">{{ isRegisterMode() ? 'Log in' : 'Register' }}</a>
+    </p>
+  </div>
+</div>
