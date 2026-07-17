@@ -20,10 +20,16 @@ router.get('/', async (req, res) => {
 // Create a task
 router.post('/', async (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, dueDate, priority } = req.body;
     if (!title) return res.status(400).json({ message: 'Title is required' });
 
-    const task = new Task({ title, description, owner: req.userId });
+    const task = new Task({
+      title,
+      description,
+      dueDate: dueDate || null,
+      priority: priority || 'medium',
+      owner: req.userId,
+    });
     await task.save();
     res.status(201).json(task);
   } catch (err) {

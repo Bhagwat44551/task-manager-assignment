@@ -5,11 +5,15 @@ import { Auth } from './auth';
 
 const API_URL = 'https://task-manager-assignment-kb8u.onrender.com/api/tasks';
 
+export type TaskPriority = 'low' | 'medium' | 'high';
+
 export interface Task {
   _id?: string;
   title: string;
   description?: string;
   completed?: boolean;
+  dueDate?: string | null;
+  priority?: TaskPriority;
   createdAt?: string;
 }
 

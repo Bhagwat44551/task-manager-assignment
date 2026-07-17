@@ -24,20 +24,81 @@
       placeholder="Description (optional)"
       (keyup.enter)="addTask()"
     />
+    <input
+      type="date"
+      [(ngModel)]="newDueDate"
+      class="date-input"
+    />
+    <select [(ngModel)]="newPriority" class="priority-select">
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+    </select>
     <button (click)="addTask()">Add Task</button>
   </section>
 
+  <section class="controls">
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Search tasks..."
+      [ngModel]="searchTerm()"
+      (ngModelChange)="onSearchChange($event)"
+    />
+    <div class="filter-chips">
+      <button
+        class="chip"
+        [class.active]="filterMode() === 'all'"
+        (click)="setFilter('all')"
+      >
+        All ({{ tasks().length }})
+      </button>
+      <button
+        class="chip"
+        [class.active]="filterMode() === 'active'"
+        (click)="setFilter('active')"
+      >
+        Active ({{ activeCount() }})
+      </button>
+      <button
+        class="chip"
+        [class.active]="filterMode() === 'completed'"
+        (click)="setFilter('completed')"
+      >
+        Completed ({{ tasks().length - activeCount() }})
+      </button>
+    </div>
+  </section>
+
   <section class="task-list">
-    @if (tasks().length === 0) {
-      <p class="empty-state">No tasks yet. Add one above.</p>
+    @if (visibleTasks().length === 0) {
+      <p class="empty-state">
+        @if (tasks().length === 0) {
+          No tasks yet. Add one above.
+        } @else {
+          No tasks match your search or filter.
+        }
+      </p>
     }
 
-    @for (task of tasks(); track task._id) {
-      <div class="task-item" [class.completed]="task.completed">
+    @for (task of visibleTasks(); track task._id) {
+      <div
+        class="task-item"
+        [class.completed]="task.completed"
+        [class.overdue]="isOverdue(task)"
+      >
         @if (editingTaskId() === task._id) {
           <div class="edit-form">
             <input type="text" [(ngModel)]="editTitle" placeholder="Title" />
             <input type="text" [(ngModel)]="editDescription" placeholder="Description" />
+            <div class="edit-row">
+              <input type="date" [(ngModel)]="editDueDate" class="date-input" />
+              <select [(ngModel)]="editPriority" class="priority-select">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
             <div class="edit-actions">
               <button (click)="saveEdit(task)">Save</button>
               <button class="secondary" (click)="cancelEdit()">Cancel</button>
@@ -51,9 +112,20 @@
               (change)="toggleComplete(task)"
             />
             <div class="task-text">
-              <p class="task-title">{{ task.title }}</p>
+              <div class="task-title-row">
+                <p class="task-title">{{ task.title }}</p>
+                <span class="badge priority-{{ task.priority || 'medium' }}">
+                  {{ task.priority || 'medium' }}
+                </span>
+                @if (isOverdue(task)) {
+                  <span class="badge overdue-badge">Overdue</span>
+                }
+              </div>
               @if (task.description) {
                 <p class="task-desc">{{ task.description }}</p>
+              }
+              @if (task.dueDate) {
+                <p class="task-due">Due: {{ task.dueDate | date: 'mediumDate' }}</p>
               }
             </div>
           </div>

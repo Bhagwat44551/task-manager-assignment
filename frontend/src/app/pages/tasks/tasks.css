@@ -178,3 +178,109 @@ h1 {
   background: #4a63e7;
   color: #fff;
 }
+
+.date-input,
+.priority-select {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: #fff;
+}
+
+.edit-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-row .date-input,
+.edit-row .priority-select {
+  flex: 1;
+  padding: 0.5rem 0.6rem;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.search-input {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.filter-chips {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.35rem 0.85rem;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.chip.active {
+  background: #4a63e7;
+  border-color: #4a63e7;
+  color: #fff;
+  font-weight: 600;
+}
+
+.chip:hover:not(.active) {
+  background: #f2f2f2;
+}
+
+.task-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.task-due {
+  margin: 0.2rem 0 0;
+  font-size: 0.78rem;
+  color: #888;
+}
+
+.badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.priority-low {
+  background: #e6f4ea;
+  color: #1e7e34;
+}
+
+.priority-medium {
+  background: #fff4e5;
+  color: #b06a00;
+}
+
+.priority-high {
+  background: #fdecea;
+  color: #c5221f;
+}
+
+.overdue-badge {
+  background: #2b2b2b;
+  color: #fff;
+}
+
+.task-item.overdue {
+  border-color: #f3c6c4;
+}
