@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Auth } from './auth';
 
-const API_URL = 'http://localhost:5001/api/tasks';
+const API_URL = 'https://task-manager-assignment-kb8u.onrender.com';
 
 export interface Task {
   _id?: string;
