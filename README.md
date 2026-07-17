@@ -3,8 +3,8 @@
 A small full-stack task manager built with **Angular**, **Node.js/Express**, and **MongoDB**, with JWT-based authentication and full CRUD on tasks.
 
 ## Live Demo
-- Frontend: `<add your deployed frontend URL here>`
-- Backend API: `<add your deployed backend URL here>`
+- Frontend: `https://task-manager-assignment-1-kuco.onrender.com`
+- Backend API: `https://task-manager-assignment-kb8u.onrender.com`
 
 ## Tech Stack
 - **Frontend:** Angular 21 (standalone components, signals), TypeScript
