@@ -2,7 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 
-const API_URL = 'https://task-manager-assignment-kb8u.onrender.com';
+const API_URL = 'https://task-manager-assignment-kb8u.onrender.com/api/auth';
 const TOKEN_KEY = 'tm_token';
 const USERNAME_KEY = 'tm_username';
 
